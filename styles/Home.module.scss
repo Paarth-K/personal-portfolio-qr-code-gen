@@ -1,0 +1,56 @@
+.generateButton {
+  padding: 10px;
+  width: 170px;
+  margin: 10px;
+  text-align: center;
+  border-radius: 30px;
+  border: 1px solid black;
+  transition: border 0.1s;
+  background-color: #84e1d2;
+  user-select: none;
+  color: #0b181e;
+  user-select: none;
+  font-size: 10pt;
+  transition: border 0.1s, background-color 0.1s;
+  // font-weight: 500;
+}
+
+.generateButton:hover {
+  border: 1px #3299cd dashed;
+  background-color: #f7fdf9;
+}
+
+.nameInput {
+  margin: 10px;
+  height: 30px;
+  outline: none;
+  border: 2px solid black;
+  font-size: 15pt;
+  text-align: center;
+  padding: 15px 0px;
+}
+
+.main {
+  display: flex;
+  // width: 100%;
+  width: 800px;
+  align-items: center;
+  margin: 50px auto;
+  // flex;
+  flex-direction: column;
+  zoom: 170%;
+
+  // scale: 2;
+}
+
+.resetButton {
+  font-size: 9pt;
+  // padding: 15px;
+  // height: 50px;
+}
+
+.resetButtonCont {
+  cursor: pointer;
+  margin-top: 20px;
+  padding: 10px;
+}
