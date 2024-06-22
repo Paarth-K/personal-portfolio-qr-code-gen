@@ -50,15 +50,41 @@
   // height: 50px;
 }
 
-.resetButtonCont {
+.biggerHitBox {
   cursor: pointer;
-  margin-top: 20px;
+  margin-top: 5px;
   padding: 10px;
 }
 
+.conditionalBlur {
+  filter: blur(10px);
+}
+.conditionalBlur:hover {
+  filter: blur(0px);
+}
+
+.qrCode {
+  transition: filter 0.1s;
+  cursor: pointer;
+}
+
+.line {
+  height: 1.5px;
+  width: 30px;
+  cursor: pointer;
+}
+.red {
+  background-color: #ff7972;
+}
+.green {
+  background-color: #8aff8a;
+}
 @media (max-width: 1000px) {
   .main {
     margin-top: 90px;
     zoom: 120%;
+  }
+  .conditionalBlur {
+    filter: none;
   }
 }

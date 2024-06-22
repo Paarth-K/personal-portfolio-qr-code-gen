@@ -2,9 +2,10 @@ import Head from "next/head";
 import Image from "next/image";
 import { DM_Sans } from "next/font/google";
 import styles from "@/styles/Home.module.scss";
-import { useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import QRCode from "react-qr-code";
-
+import { useRouter } from "next/router";
+import filter from "@/components/profanityFilter";
 const dmsans = DM_Sans({ subsets: ["latin"] });
 function toTitleCase(str) {
   return str.replace(
@@ -12,9 +13,31 @@ function toTitleCase(str) {
     (text) => text.charAt(0).toUpperCase() + text.substring(1).toLowerCase()
   );
 }
+
 export default function Home() {
   const [name, setName] = useState("");
   const nameInputRef = useRef();
+  const router = useRouter();
+  const [url, setUrl] = useState("https://www.paarthkukreja.com/");
+  const [bypass, setBypass] = useState(false);
+  var cleanName = "";
+  useEffect(() => {
+    if (!bypass) {
+      try {
+        cleanName = filter.clean(name);
+        setName(cleanName);
+      } catch {
+        cleanName = name;
+      }
+    } else {
+      cleanName = name;
+    }
+    setUrl(
+      `https://www.paarthkukreja.com/${
+        cleanName ? `?to=${toTitleCase(cleanName.replace(" ", "%20"))}` : ""
+      }`
+    );
+  }, [name, bypass]);
   return (
     <>
       <Head>
@@ -25,11 +48,14 @@ export default function Home() {
       </Head>
 
       <main className={`${styles.main} ${dmsans.className}`}>
-        <QRCode
-          value={`https://www.paarthkukreja.com/${
-            name ? `?to=${toTitleCase(name.replace(" ", "%20"))}` : ""
-          }`}
-        ></QRCode>
+        <div
+          className={`${name ? "" : styles.conditionalBlur} ${styles.qrCode}`}
+          onClick={() => {
+            router.push(url);
+          }}
+        >
+          <QRCode value={url}></QRCode>
+        </div>
         <br />
         <br />
         <input
@@ -44,10 +70,21 @@ export default function Home() {
         />
         <div
           onClick={() => {
+            setBypass(!bypass);
+            nameInputRef.current.focus();
+          }}
+          className={styles.biggerHitBox}
+        >
+          <div
+            className={`${styles.line} ${!bypass ? styles.green : styles.red}`}
+          ></div>
+        </div>
+        <div
+          onClick={() => {
             setName("");
             nameInputRef.current.focus();
           }}
-          className={styles.resetButtonCont}
+          className={styles.biggerHitBox}
         >
           <p className={styles.resetButton}>reset</p>
         </div>
