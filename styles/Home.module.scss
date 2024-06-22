@@ -33,12 +33,13 @@
 .main {
   display: flex;
   // width: 100%;
-  width: 800px;
+  width: 100%;
   align-items: center;
   margin: 50px auto;
   // flex;
   flex-direction: column;
-  zoom: 170%;
+  zoom: 175%;
+  margin-top: 70px;
 
   // scale: 2;
 }
@@ -53,4 +54,11 @@
   cursor: pointer;
   margin-top: 20px;
   padding: 10px;
+}
+
+@media (max-width: 1000px) {
+  .main {
+    margin-top: 90px;
+    zoom: 120%;
+  }
 }
