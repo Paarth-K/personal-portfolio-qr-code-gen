@@ -73,6 +73,14 @@
   width: 30px;
   cursor: pointer;
 }
+.hidden {
+  opacity: 0;
+}
+.scanPrompt {
+  font-size: 10pt;
+  margin-top: 10px;
+  transition: opacity 0.1s;
+}
 .red {
   background-color: #ff7972;
 }

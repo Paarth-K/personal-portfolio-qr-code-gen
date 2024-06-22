@@ -37,6 +37,9 @@ export default function Home() {
         cleanName ? `?to=${toTitleCase(cleanName.replace(" ", "%20"))}` : ""
       }`
     );
+    window.addEventListener("keydown", (e) => {
+      nameInputRef.current.focus();
+    });
   }, [name, bypass]);
   return (
     <>
@@ -56,13 +59,15 @@ export default function Home() {
         >
           <QRCode value={url}></QRCode>
         </div>
-        <br />
+        <p className={`${name ? "" : styles.hidden} ${styles.scanPrompt}`}>
+          now scan the code!
+        </p>
         <br />
         <input
           type="text"
           value={name}
           className={styles.nameInput}
-          placeholder="enter your name"
+          placeholder="type your name"
           ref={nameInputRef}
           onChange={(e) => {
             setName(e.target.value);
