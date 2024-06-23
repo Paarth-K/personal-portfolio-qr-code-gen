@@ -34,7 +34,7 @@ export default function Home() {
     }
     setUrl(
       `https://www.paarthkukreja.com/${
-        cleanName ? `?to=${toTitleCase(cleanName.replace(" ", "%20"))}` : ""
+        cleanName ? `?to=${toTitleCase(cleanName).replace(" ", "%20")}` : ""
       }`
     );
     window.addEventListener("keydown", (e) => {
