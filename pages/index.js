@@ -4,7 +4,7 @@ import { DM_Sans } from "next/font/google";
 import styles from "@/styles/Home.module.scss";
 import { useEffect, useRef, useState } from "react";
 import QRCode from "react-qr-code";
-import { useRouter } from "next/router";
+// import { useRouter } from "next/router";
 import filter from "@/components/profanityFilter";
 const dmsans = DM_Sans({ subsets: ["latin"] });
 function toTitleCase(str) {
@@ -17,7 +17,7 @@ function toTitleCase(str) {
 export default function Home() {
   const [name, setName] = useState("");
   const nameInputRef = useRef();
-  const router = useRouter();
+  // const router = useRouter();
   const [url, setUrl] = useState("https://www.paarthkukreja.com/");
   const [bypass, setBypass] = useState(false);
   var cleanName = "";
@@ -54,7 +54,7 @@ export default function Home() {
         <div
           className={`${name ? "" : styles.conditionalBlur} ${styles.qrCode}`}
           onClick={() => {
-            router.push(url);
+            window.open(url);
           }}
         >
           <QRCode value={url}></QRCode>
