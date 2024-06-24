@@ -91,7 +91,7 @@ export default function Home() {
           }}
           className={styles.biggerHitBox}
         >
-          <p className={styles.resetButton}>reset</p>
+          <p className={styles.resetButton}>clear</p>
         </div>
         {/* <div className={styles.generateButton}>Generate QR Code</div> */}
       </main>
