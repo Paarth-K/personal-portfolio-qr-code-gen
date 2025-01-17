@@ -1,12 +1,11 @@
-var Filter = require("bad-words");
-var filter = new Filter();
-var badWordList = require("badwords-list");
-const badWordListArray = badWordList.array;
+import { Filter } from "bad-words";
+const filter = new Filter({ placeHolder: "*" });
+import { array } from "badwords-list";
 
-filter.addWords(...badWordListArray);
+filter.addWords(...array);
 
 // custom words
-var customBadWords = [
+const customBadWords = [
   "nigglet",
   "bitchass",
   "niglet",
@@ -15,6 +14,7 @@ var customBadWords = [
   "hardass",
   "jackass",
 ];
+
 filter.addWords(...customBadWords);
 
 export default filter;
